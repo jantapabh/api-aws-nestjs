@@ -1,14 +1,16 @@
-{
-    "apps": [
-      {
-        "name": "api",
-        "script": "dist/main.js",
-        "instances": 1,
-        "exec_mode": "cluster",
-        "env": {
-          "NODE_ENV": "prod",
-          "PORT": 3000
-        }
-      }
-    ]
-  }
+// pm2.config.js
+module.exports = {
+  apps: [
+    {
+      name: 'Backend API',
+      script: 'npx',
+      args: 'nx run api:serve',
+      cwd: 'apps/api',
+      interpreter: 'ts-node',
+      env: {
+        PORT: 3000,
+        NODE_ENV: 'production',
+      },
+    },
+  ],
+};
